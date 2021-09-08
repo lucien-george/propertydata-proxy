@@ -2,7 +2,6 @@ require 'date'
 require 'sinatra'
 require 'redis-sinatra'
 require 'http'
-require 'pry'
 
 register Sinatra::Cache
 
