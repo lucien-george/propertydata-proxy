@@ -5,6 +5,12 @@ require 'http'
 
 register Sinatra::Cache
 
+configure do
+  require 'redis'
+  uri = URI.parse(ENV["REDISCLOUD_URL"])
+  $redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+end
+
 get "/" do
   settings.cache.fetch('ping') { 'pong' }
 end
